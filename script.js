@@ -60,6 +60,13 @@ function checkResult() {
         const winner = currentPlayer === "X" ? "O" : "X";
         gameInfo.innerText = `Player ${winner} Wins!`;
         gameActive = false;
+
+        confetti({
+        particleCount: 300,
+        spread: 150,
+        origin: { y: 1 },
+        colors: ['#FF5733', '#3498db', '#4CAF50', '#F1C40F', '#9B59B6']
+        });
         return;
     }
 
