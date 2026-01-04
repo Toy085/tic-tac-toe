@@ -125,3 +125,26 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.game-footer {
+    position: fixed;
+    margin: 0 auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
+    background-color: lightskyblue; /* Or match your body color */
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.game-footer a {
+    color: #4CAF50; /* Matches your button color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.game-footer a:hover {
+    text-decoration: underline;
+}
