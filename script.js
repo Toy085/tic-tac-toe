@@ -32,6 +32,9 @@ function handleCellClick(event) {
 function updateCell(cell, index) {
     gameState[index] = currentPlayer;
     cell.innerText = currentPlayer;
+
+    cell.classList.add('inner-text');
+    cell.classList.add(currentPlayer.toLowerCase()); // Add 'x' or 'o' class for styling
     
     // Toggle player
     currentPlayer = currentPlayer === "X" ? "O" : "X";
@@ -76,7 +79,10 @@ function startGame() {
     gameInfo.innerText = "Player X's turn";
     
     // Clear the visual board
-    cells.forEach(cell => cell.innerText = "");
+    cells.forEach(cell => {
+        cell.innerText = "";
+        cell.classList.remove('inner-text', 'x', 'o');
+    });
     gameButton.innerText = "Restart Game";
 }
 

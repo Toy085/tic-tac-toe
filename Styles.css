@@ -89,9 +89,15 @@
     z-index: 1;
 }
 .cell.inner-text {
-    color: #FF5733;
+    color: rebeccapurple;
     font-size: 48px;
     font-weight: bold;
+}
+.cell.x {
+    color: red; /* Color for X */
+}
+.cell.o {
+    color: blue; /* Color for O */
 }
 .game-button {
     display: block;
