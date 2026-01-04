@@ -92,6 +92,11 @@
     font-size: 56px;
     font-weight: bold;
 }
+.cell.inner-text:hover {
+    transform: none; /* Disable hover effect when cell is filled */
+    cursor: default;
+    background-color: whitesmoke;
+}
 .cell.x {
     color: red; /* Color for X */
 }
