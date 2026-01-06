@@ -55,9 +55,35 @@
     "GRAD" 0;
 }
 
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --cell-bg: whitesmoke;
+    --cell-border: black;
+    --cell-hover: #f0f0f0;
+    --footer-bg: lightskyblue;
+    --footer-text: #000000;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+    --bg-color: #1e1e2e;
+    --text-color: #f0f0f0;
+    --cell-bg: #2d2d44;
+    --cell-border: #5c5c8a;
+    --cell-hover: #3b3b58;
+    --footer-bg: #11111b;
+    --footer-text: #ffffff;
+}
+
 * {
     margin: 0 auto;
     font-family: "Ubuntu", 'Arial', sans-serif, 'Times New Roman', Times, serif;
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 .game-Title {
     font-size: 36px;
@@ -83,8 +109,8 @@
 .cell {
     width: 100px;
     height: 100px;
-    background-color: whitesmoke;
-    border: 2px solid black;
+    background-color: var(--cell-bg);
+    border: 2px solid var(--cell-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,7 +119,7 @@
     transition: transform 0.2s ease-in-out;
 }
 .cell:hover {
-    background-color: #f0f0f0;
+    background-color: var(--cell-hover);
     transform: scale(1.1);
     z-index: 1;
 }
@@ -105,7 +131,7 @@
 .cell.inner-text:hover {
     transform: none; /* Disable hover effect when cell is filled */
     cursor: default;
-    background-color: whitesmoke;
+    background-color: var(--cell-bg);
 }
 .cell.x {
     color: red; /* Color for X */
@@ -133,7 +159,8 @@
     left: 50%;
     transform: translateX(-50%);
     width: 20%;
-    background-color: lightskyblue;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 10px 0;
     text-align: center;
     border-radius: 10px 10px 0 0;
@@ -147,4 +174,64 @@
 
 .game-footer a:hover {
     text-decoration: underline;
+}
+
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 345px;
+    font-size: 14px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
