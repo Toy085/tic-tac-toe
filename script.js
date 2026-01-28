@@ -1,11 +1,14 @@
 const cells = document.querySelectorAll('.cell');
 const gameButton = document.getElementById('gameButton');
+const gameButtonBot = document.getElementById('gameButtonBot');
 const gameInfo = document.querySelector('.game-Info');
 
 // Game State variables
 let currentPlayer = 'X';
 let gameState = ["", "", "", "", "", "", "", "", ""];
 let gameActive = false;
+let botIsPlaying = false;
+let roundWon = false;
 
 // Winning conditions (indices in the grid)
 const winningConditions = [
@@ -41,12 +44,29 @@ function updateCell(cell, index) {
     // Update the UI to show whose turn it is
     if (gameActive) {
         gameInfo.innerText = `Player ${currentPlayer}'s turn`;
+        // Makes sure the bot doesn't play after player has won
+        checkResult();
+
+        if (botIsPlaying && currentPlayer === "O" && !roundWon) {
+            gameActive = false;
+            setTimeout(doBotMove, 400);
+        }
+    }
+}
+
+function doBotMove() {
+    gameActive = true;
+
+    const moveIndex = botMove(gameState);
+
+    if (moveIndex != null) {
+        const targetCell = document.querySelector(`.cell[data-index="${moveIndex}"]`);
+        updateCell(targetCell, moveIndex);
+        checkResult();
     }
 }
 
 function checkResult() {
-    let roundWon = false;
-
     for (let i = 0; i < winningConditions.length; i++) {
         const [a, b, c] = winningConditions[i];
         if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
@@ -95,6 +115,10 @@ function startGame() {
 // Attach Event Listeners
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
 gameButton.addEventListener('click', startGame);
+gameButtonBot.addEventListener('click', () => {
+    botIsPlaying = true;
+    startGame();
+})
 
 // Dark Mode Toggle Logic
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
