@@ -99,6 +99,7 @@ function checkResult() {
 
 // Start/Restart Game
 function startGame() {
+    roundWon = false;
     currentPlayer = "X";
     gameState = ["", "", "", "", "", "", "", "", ""];
     gameActive = true;
