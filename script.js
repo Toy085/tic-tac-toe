@@ -57,7 +57,7 @@ function updateCell(cell, index) {
 function doBotMove() {
     gameActive = true;
 
-    const moveIndex = botMove(gameState);
+    const moveIndex = botMove(gameState, 0);
 
     if (moveIndex != null) {
         const targetCell = document.querySelector(`.cell[data-index="${moveIndex}"]`);
