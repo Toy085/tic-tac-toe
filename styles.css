@@ -151,6 +151,10 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+.botModeDropdown {
+    margin: 20px auto;
+    width: 300px;
+}
 
 .game-footer {
     position: fixed;

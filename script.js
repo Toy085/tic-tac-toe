@@ -2,6 +2,7 @@ const cells = document.querySelectorAll('.cell');
 const gameButton = document.getElementById('gameButton');
 const gameButtonBot = document.getElementById('gameButtonBot');
 const gameInfo = document.querySelector('.game-Info');
+const botModeSelect = document.getElementById('botMode');
 
 // Game State variables
 let currentPlayer = 'X';
@@ -57,7 +58,8 @@ function updateCell(cell, index) {
 function doBotMove() {
     gameActive = true;
 
-    const moveIndex = botMove(gameState, 1);
+    const difficulty = parseInt(botModeSelect.value);
+    const moveIndex = botMove(gameState, difficulty);
 
     if (moveIndex != null) {
         const targetCell = document.querySelector(`.cell[data-index="${moveIndex}"]`);

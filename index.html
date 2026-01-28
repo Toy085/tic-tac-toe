@@ -27,9 +27,23 @@
             <div class="cell" data-index="7"></div>
             <div class="cell" data-index="8"></div>
         </div>
-        <button class="game-button" id="gameButton">Start</button> <!-- Button to start/restart the game-->
+
+        <button class="game-button" id="gameButton">Start</button>
+
+        <div class="botModeDropdown">
+            <label for="botMode">Choose bot's difficulty:</label>
+
+            <select name="botMode" id="botMode">
+                <option value="0">Easy</option>
+                <option value="1">Medium</option>
+                <option value="2">Hard</option>
+                <option value="3">Random</option>
+            </select>
+        </div>
+
         <button class="game-button" id="gameButtonBot">Play with Bot</button>
     </div>
+
     <div class="theme-switch-wrapper">
     <label class="theme-switch" for="checkbox">
         <input type="checkbox" id="checkbox" />
@@ -37,6 +51,7 @@
     </label>
     <em>Dark Mode</em>
     </div>
+
     <script src="script.js"></script>
     <script src="bot.js"></script>
 </body>
